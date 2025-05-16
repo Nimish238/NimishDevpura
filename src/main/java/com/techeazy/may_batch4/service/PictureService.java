@@ -1,23 +1,16 @@
 package com.techeazy.may_batch4.service;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
-import com.techeazy.may_batch4.model.Picture;
+import com.techeazy.may_batch4.entity.PictureEntity;
+import org.springframework.web.multipart.MultipartFile;
 
-public class PictureService {
 
-	public void save(Picture picture) {
-		// repo
-		// if save not successfull
-		// throw error
+public interface PictureService {
 
-	}
+	public void savePictures(MultipartFile file,String location) throws IOException;
 
-	public List<Picture> getPictures() {
-		List<Picture> pics = new ArrayList<>();
-		pics.add(new Picture());
-		// repo
-		return pics;
-	}
+	public List<PictureEntity> getPictures();
+
 }
