@@ -11,14 +11,14 @@ import lombok.Setter;
 @Data
 public class UserModel {
 
-	private Integer ID;
+    private Integer ID;
 
-	private String name;
+    private String name;
 
-	private String email;
+    private String email;
 
-	private String role;
+    private String role;
 
-	private String password;
+    private String password;
 
 }
