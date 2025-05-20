@@ -1,4 +1,4 @@
-package com.techeazy.may_batch4.service.Implementation;
+package com.techeazy.may_batch4.service.impl;
 
 import com.techeazy.may_batch4.entity.PictureEntity;
 import com.techeazy.may_batch4.repository.PictureRepository;

@@ -26,11 +26,11 @@ public class PictureController {
 	}
 
 	@PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public String upload(@RequestParam("file") MultipartFile file,
-						 @RequestParam String location
+	public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file,
+										 @RequestParam String location
 	)  throws Exception{
 
 		pictureService.savePictures(file,location);
-		return String.valueOf(ResponseEntity.ok( "Image uploaded and saved"));
+		return ResponseEntity.ok( "Image uploaded and saved");
 	}
 }

@@ -1,10 +1,9 @@
-package com.techeazy.may_batch4.service.Implementation;
+package com.techeazy.may_batch4.service.impl;
+
 
 import com.techeazy.may_batch4.entity.UserEntity;
-import com.techeazy.may_batch4.model.LoginModel;
 import com.techeazy.may_batch4.model.UserModel;
 import com.techeazy.may_batch4.repository.UserRepository;
-import com.techeazy.may_batch4.response.LoginMessage;
 import com.techeazy.may_batch4.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -12,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class UserImpl implements UserService {
@@ -38,31 +38,7 @@ public class UserImpl implements UserService {
         userRepository.save(newUser);
         return String.valueOf(newUser);
     }
-    UserModel userModel;
-    @Override
-    public LoginMessage loginUser(LoginModel loginModel) {
-        UserEntity user1 = userRepository.findByEmail(loginModel.getEmail());
-        if(user1!=null){
-            String password = loginModel.getPassword();
-            String ePassword = user1.getPassword();
-            boolean checkPassword = passwordEncoder.matches(password,ePassword);
-            if(checkPassword){
-                Optional<UserEntity> user = userRepository.findByEmailAndPassword(loginModel.getEmail(), ePassword);
-                if(user.isPresent()){
-                    return new LoginMessage("Login success!!",true);
-                }
-                else {
-                    return new LoginMessage("Login failed!!", false);
-                }
-            }
-            else{
-                return new LoginMessage("Password does not match!!",false);
-            }
-        }
-        else{
-            return new LoginMessage("Email does not match",false);
-        }
-    }
+
 
     @Override
     public UserModel getUserById(Integer userId) {
